@@ -65,9 +65,18 @@ describe('POST /fraud-score - valid payloads', () => {
     const res = await post(validPayload())
     expect(res.statusCode).toBe(200)
     const body = res.json()
-    expect(body).toEqual({ approved: false, fraud_score: 1.0 })
+    expect(Object.keys(body).sort()).toEqual(['approved', 'fraud_score'])
     expect(typeof body.approved).toBe('boolean')
-    expect(typeof body.fraud_score).toBe('number')
+    // fraud_score is frauds / 5, so always a multiple of 0.2 in [0, 1].
+    expect([0, 0.2, 0.4, 0.6, 0.8, 1]).toContain(body.fraud_score)
+    expect(body.approved).toBe(body.fraud_score < 0.6)
+  })
+
+  it('approves this clearly legit payload (low fraud_score)', async () => {
+    const res = await post(validPayload())
+    const body = res.json()
+    expect(body.approved).toBe(true)
+    expect(body.fraud_score).toBeLessThan(0.6)
   })
 
   it('accepts last_transaction = null', async () => {
