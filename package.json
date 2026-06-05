@@ -1,6 +1,12 @@
 {
  "type": "module",
-  "dependencies": {
-    "fastify": "^5.8.5"
-  }
+ "scripts": {
+    "test": "vitest"
+  },
+ "dependencies": {
+  "fastify": "^5.8.5"
+ },
+ "devDependencies": {
+  "vitest": "^4.1.8"
+ }
 }
