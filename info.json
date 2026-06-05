@@ -1,0 +1,7 @@
+{
+  "participants": ["Renan Oliveira"],
+  "social": ["https://github.com/Renan04lima"],
+  "source-code-repo": "https://github.com/Renan04lima/rinha-back-2026",
+  "stack": ["nodejs", "fastify", "nginx"],
+  "open_to_work": true
+}
