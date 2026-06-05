@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+test
+benchmark
+docs
+*.md
+.nvmrc
+# Generated index artifacts are produced inside the build stage, never copied in.
+resources/vectors.bin
+resources/labels.bin
+resources/ivf.bin
